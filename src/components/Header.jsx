@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import React, { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeNav, setActiveNav] = useState('home');
-  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [activeNav, setActiveNav] = useState("home");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'banking', label: 'Banking' },
-    { id: 'crypto', label: 'Crypto' },
-    { id: 'card', label: 'Card' },
-    { id: 'about', label: 'About Us', hasDropdown: true },
+    { id: "home", label: "Home" },
+    { id: "banking", label: "Banking" },
+    { id: "crypto", label: "Crypto" },
+    { id: "card", label: "Card" },
+    { id: "about", label: "About Us", hasDropdown: true },
   ];
 
-  // Close About dropdown when another nav item is selected
-  useEffect(() => {
-    if (activeNav !== 'about') {
-      setAboutDropdownOpen(false);
+  const handleNavClick = (id) => {
+    setActiveNav(id);
+    if (id !== "about") {
+      setDropdownOpen(false);
+    } else {
+      setDropdownOpen(true);
     }
-  }, [activeNav]);
+  };
 
   return (
     <header className="fixed top-0 w-full bg-[#090D20]/80 backdrop-blur-sm z-50 px-6 md:px-24 py-4">
@@ -33,69 +35,61 @@ const Header = () => {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8 relative">
           {navItems.map((item) => (
-            <div key={item.id} className="relative flex flex-col items-center">
-              {/* Regular Links */}
-              {!item.hasDropdown ? (
-                <a
-                  href={`#${item.id}`}
-                  onClick={() => setActiveNav(item.id)}
-                  className={`text-sm transition-colors ${
-                    activeNav === item.id
-                      ? 'text-[#7450A9]'
-                      : 'text-white hover:text-[#7450A9]'
-                  }`}
-                >
-                  {item.label}
-                </a>
-              ) : (
-                // About Us Dropdown Button
-                <button
-                  onClick={() => {
-                    setActiveNav('about');
-                    setAboutDropdownOpen(!aboutDropdownOpen);
-                  }}
-                  className={`flex items-center gap-1 text-sm transition-colors ${
-                    activeNav === 'about' && aboutDropdownOpen
-                      ? 'text-[#7450A9]'
-                      : 'text-white hover:text-[#7450A9]'
-                  }`}
-                >
-                  {item.label}
-                  <ChevronDown
-                    size={16}
-                    className={`transition-transform ${
-                      aboutDropdownOpen ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
-              )}
+            <div
+              key={item.id}
+              className="relative flex flex-col items-center"
+              onMouseEnter={() => item.hasDropdown && setDropdownOpen(true)}
+              onClick={() => handleNavClick(item.id)}
+            >
+              <a
+                href={`#${item.id}`}
+                className={`text-sm transition-colors focus:outline-none ${
+                  activeNav === item.id
+                    ? "text-[#7450A9]"
+                    : "hover:text-[#7450A9]"
+                }`}
+              >
+                {item.label}
+              </a>
 
-              {/* Indicator Bar */}
+              {/* Active underline */}
               {activeNav === item.id && (
                 <span className="absolute -bottom-1 w-4/5 h-[2px] bg-[#7450A9] rounded-full"></span>
               )}
 
-              {/* Click Dropdown for About Us */}
-              {item.hasDropdown && aboutDropdownOpen && (
-                <div className="absolute top-6 flex flex-col bg-white text-black rounded-lg shadow-lg mt-4 py-2 w-40 animate-fade-in">
+              {/* About Us Dropdown */}
+              {item.hasDropdown && dropdownOpen && (
+                <div
+                  className="absolute top-6 flex flex-col bg-white text-black rounded-lg shadow-lg mt-4 py-2 w-40 z-20"
+                  onMouseLeave={() => setDropdownOpen(false)} // 👈 Closes when mouse leaves dropdown only
+                >
                   <a
                     href="#company"
                     className="px-4 py-2 text-sm hover:bg-gray-100"
-                    onClick={() => setActiveNav('company')}
+                    onClick={() => {
+                      setActiveNav("about");
+                      setDropdownOpen(false);
+                    }}
                   >
                     Company
                   </a>
                   <a
                     href="#team"
                     className="px-4 py-2 text-sm hover:bg-gray-100"
-                    onClick={() => setActiveNav('team')}
+                    onClick={() => {
+                      setActiveNav("about");
+                      setDropdownOpen(false);
+                    }}
                   >
                     Team
                   </a>
                   <a
                     href="#careers"
                     className="px-4 py-2 text-sm hover:bg-gray-100"
-                    onClick={() => setActiveNav('careers')}
+                    onClick={() => {
+                      setActiveNav("about");
+                      setDropdownOpen(false);
+                    }}
                   >
                     Careers
                   </a>
@@ -105,20 +99,12 @@ const Header = () => {
           ))}
 
           {/* Support Button */}
-          <button
-            onClick={() => setActiveNav('support')}
-            className={`px-5 py-2 rounded-full text-sm transition-all 
-              ${
-                activeNav === 'support'
-                  ? 'bg-[#7450A9] text-white'
-                  : 'bg-white text-black hover:bg-gray-100 active:bg-[#7450A9] active:text-white focus:bg-[#7450A9] focus:text-white'
-              }`}
-          >
+          <button className="px-5 py-2 bg-white text-black rounded-full text-sm hover:bg-gray-100 active:bg-gray-200 transition-colors">
             Support
           </button>
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Toggle */}
         <button
           className="md:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -136,7 +122,9 @@ const Header = () => {
                 <a
                   href={`#${item.id}`}
                   className={`text-sm transition-colors ${
-                    activeNav === item.id ? 'text-[#7450A9]' : 'hover:text-[#7450A9]'
+                    activeNav === item.id
+                      ? "text-[#7450A9]"
+                      : "hover:text-[#7450A9]"
                   }`}
                   onClick={() => {
                     setActiveNav(item.id);
@@ -146,7 +134,6 @@ const Header = () => {
                   {item.label}
                 </a>
 
-                {/* Mobile dropdown for About Us */}
                 {item.hasDropdown && (
                   <div className="ml-4 mt-2 flex flex-col gap-2">
                     <a
@@ -175,15 +162,7 @@ const Header = () => {
               </div>
             ))}
 
-            <button
-              className={`px-5 py-2 rounded-full text-sm transition-all 
-                ${
-                  activeNav === 'support'
-                    ? 'bg-[#7450A9] text-white'
-                    : 'bg-white text-black hover:bg-gray-100 active:bg-[#7450A9] active:text-white focus:bg-[#7450A9] focus:text-white'
-                }`}
-              onClick={() => setActiveNav('support')}
-            >
+            <button className="px-5 py-2 bg-white text-black rounded-full text-sm hover:bg-gray-100 active:bg-gray-200 transition-colors">
               Support
             </button>
           </nav>
