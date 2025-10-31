@@ -3,34 +3,72 @@ import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeNav, setActiveNav] = useState('home');
+
+  const navItems = [
+    { id: 'home', label: 'Home' },
+    { id: 'banking', label: 'Banking' },
+    { id: 'crypto', label: 'Crypto' },
+    { id: 'card', label: 'Card' },
+    { id: 'about', label: 'About Us', hasDropdown: true },
+  ];
 
   return (
     <header className="fixed top-0 w-full bg-[#090D20]/80 backdrop-blur-sm z-50 px-6 md:px-24 py-4">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
+        {/* Logo */}
         <div className="flex items-center gap-2">
-          {<img src="/images/logo.png" alt="Rexipay" className="w-6 h-8" />}
+          <img src="/images/logo.png" alt="Rexipay" className="w-6 h-8" />
           <span className="text-xl md:text-2xl font-normal">Rexipay</span>
         </div>
 
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center gap-6">
-          <a href="#home" className="text-sm hover:text-gray-300 transition-colors">Home</a>
-          <a href="#banking" className="text-sm hover:text-gray-300 transition-colors">Banking</a>
-          <a href="#crypto" className="text-sm hover:text-gray-300 transition-colors">Crypto</a>
-          <a href="#security" className="text-sm hover:text-gray-300 transition-colors">Security</a>
-        </nav>
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8 relative">
+          {navItems.map((item) => (
+            <div
+              key={item.id}
+              className="relative group flex flex-col items-center"
+              onClick={() => setActiveNav(item.id)}
+            >
+              <a
+                href={`#${item.id}`}
+                className={`text-sm transition-colors ${
+                  activeNav === item.id ? 'text-[#7450A9]' : 'hover:text-[#7450A9]'
+                }`}
+              >
+                {item.label}
+              </a>
 
-        <div className="hidden md:flex items-center gap-3">
-          <button className="px-5 py-2 rounded-full text-sm hover:bg-white/10 transition-colors">
-            About us
-          </button>
+              {/* Indicator bar */}
+              {activeNav === item.id && (
+                <span className="absolute -bottom-1 w-4/5 h-[2px] bg-[#7450A9] rounded-full"></span>
+              )}
+
+              {/* Hover dropdown for About Us */}
+              {item.hasDropdown && (
+                <div className="absolute top-6 hidden group-hover:flex flex-col bg-white text-black rounded-lg shadow-lg mt-4 py-2 w-40">
+                  <a href="#company" className="px-4 py-2 text-sm hover:bg-gray-100">
+                    Company
+                  </a>
+                  <a href="#team" className="px-4 py-2 text-sm hover:bg-gray-100">
+                    Team
+                  </a>
+                  <a href="#careers" className="px-4 py-2 text-sm hover:bg-gray-100">
+                    Careers
+                  </a>
+                </div>
+              )}
+            </div>
+          ))}
+
+          {/* Support Button */}
           <button className="px-5 py-2 bg-white text-black rounded-full text-sm hover:bg-gray-100 transition-colors">
             Support
           </button>
-        </div>
+        </nav>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           className="md:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
@@ -42,37 +80,38 @@ const Header = () => {
       {mobileMenuOpen && (
         <div className="md:hidden mt-4 pb-4 border-t border-white/10 animate-fade-in">
           <nav className="flex flex-col gap-4 mt-4">
-            <a 
-              href="#home" 
-              className="text-sm hover:text-[#F7931A] transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Home
-            </a>
-            <a 
-              href="#banking" 
-              className="text-sm hover:text-[#F7931A] transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Banking
-            </a>
-            <a 
-              href="#crypto" 
-              className="text-sm hover:text-[#F7931A] transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Crypto
-            </a>
-            <a 
-              href="#security" 
-              className="text-sm hover:text-[#F7931A] transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Security
-            </a>
-            <button className="px-5 py-2 rounded-full text-sm bg-white/10 text-left hover:bg-white/20 transition-colors">
-              About us
-            </button>
+            {navItems.map((item) => (
+              <div key={item.id} className="flex flex-col">
+                <a
+                  href={`#${item.id}`}
+                  className={`text-sm transition-colors ${
+                    activeNav === item.id ? 'text-[#7450A9]' : 'hover:text-[#7450A9]'
+                  }`}
+                  onClick={() => {
+                    setActiveNav(item.id);
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  {item.label}
+                </a>
+
+                {/* Mobile dropdown for About Us */}
+                {item.hasDropdown && (
+                  <div className="ml-4 mt-2 flex flex-col gap-2">
+                    <a href="#company" className="text-sm hover:text-[#7450A9]" onClick={() => setMobileMenuOpen(false)}>
+                      Company
+                    </a>
+                    <a href="#team" className="text-sm hover:text-[#7450A9]" onClick={() => setMobileMenuOpen(false)}>
+                      Team
+                    </a>
+                    <a href="#careers" className="text-sm hover:text-[#7450A9]" onClick={() => setMobileMenuOpen(false)}>
+                      Careers
+                    </a>
+                  </div>
+                )}
+              </div>
+            ))}
+
             <button className="px-5 py-2 bg-white text-black rounded-full text-sm hover:bg-gray-100 transition-colors">
               Support
             </button>

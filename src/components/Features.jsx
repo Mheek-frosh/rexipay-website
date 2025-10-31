@@ -27,7 +27,7 @@ const Features = () => {
             </p>
           </div>
 
-{/* ✅ Right: Cards Section */}
+{/* Right: Cards Section */}
 <div className="relative w-full flex justify-center items-center min-h-[400px]">
   <img
     src="/images/rexiatmcards.png"
@@ -37,7 +37,7 @@ const Features = () => {
 </div>
         </div>
 
-        {/* ✅ App Download Section */}
+        {/*  App Download Section */}
         <div className="relative bg-gradient-to-r from-[#F7931A] to-[#FFA94D] rounded-3xl overflow-visible mt-32">
           <div className="grid md:grid-cols-2 gap-6 items-center p-10 md:p-14 relative min-h-[380px] md:min-h-[420px]">
             {/* Left: App Mockup Image */}
