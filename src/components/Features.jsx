@@ -207,40 +207,53 @@ const Features = () => {
           </div>
         </div>
 
-        {/* ✅ App Download Section */}
-        <div className="relative bg-gradient-to-r from-[#F7931A] to-[#FFA94D] rounded-3xl overflow-visible mt-32">
-          <div className="grid md:grid-cols-2 gap-6 items-center p-10 md:p-14 relative min-h-[380px] md:min-h-[420px]">
-            {/* Left: App Mockup Image */}
-            <div className="relative flex justify-start">
-              <img
-                src="/images/threephone.png"
-                alt="Rexipay mobile app mockup"
-                className="absolute -top-20 left-[-57px] w-full max-w-[340px] md:max-w-[400px] lg:max-w-[460px] object-contain drop-shadow-2xl z-20"
-              />
-              <div className="h-[260px] md:h-[320px] lg:h-[360px]" />
-            </div>
+       {/* ✅ App Download Section */}
+<div className="relative bg-gradient-to-r from-[#F7931A] to-[#FFA94D] rounded-3xl overflow-hidden mt-32">
+  <div className="grid md:grid-cols-2 gap-6 items-center p-10 md:p-14 relative min-h-[380px] md:min-h-[420px]">
+    
+    {/* Left: App Mockup Image */}
+    <div className="relative flex justify-center md:justify-start">
+      <img
+        src="/images/threephone.png"
+        alt="Rexipay mobile app mockup"
+        className="relative w-full max-w-[320px] md:max-w-[380px] lg:max-w-[430px] object-contain drop-shadow-2xl z-20 -mt-10"
+      />
+    </div>
 
-            {/* Right: Text */}
-            <div className="space-y-6 text-black md:pl-10">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-                Download the Rexipay App
-              </h2>
-              <p className="text-black/80 text-base md:text-lg leading-relaxed">
-                Take control of your finances anywhere, anytime with our secure
-                and user-friendly mobile app.
-              </p>
+    {/* Right: Text */}
+    <div className="space-y-6 text-black md:pl-10">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+        Download the Rexipay App
+      </h2>
+      <p className="text-black/80 text-base md:text-lg leading-relaxed">
+        Take control of your finances anywhere, anytime with our secure
+        and user-friendly mobile app.
+      </p>
 
-              <div className="flex gap-4">
-                <button className="bg-black text-white px-6 py-3 rounded-xl hover:bg-black/80 transition-colors duration-300">
-                  App Store
-                </button>
-                <button className="bg-black text-white px-6 py-3 rounded-xl hover:bg-black/80 transition-colors duration-300">
-                  Google Play
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* ✅ App Store Buttons */}
+      <div className="flex gap-4">
+        <button className="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-black/80 transition-colors duration-300">
+          <img
+            src="/images/applestore.png"
+            alt="App Store"
+            className="w-6 h-6 object-contain"
+          />
+          <span>App Store</span>
+        </button>
+
+        <button className="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-black/80 transition-colors duration-300">
+          <img
+            src="/images/playstore.png"
+            alt="Google Play"
+            className="w-6 h-6 object-contain"
+          />
+          <span>Google Play</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
         {/* ✅ Security Section */}
         <div id="security" className="grid md:grid-cols-3 gap-8 mt-32">
