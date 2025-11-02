@@ -19,7 +19,7 @@ const Footer = () => {
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          {/* ✅ Newsletter (Left Side - unchanged except logo image) */}
+          {/* ✅ Newsletter (Left Side - updated button style) */}
           <motion.div className="space-y-4 w-full md:w-1/3" variants={fadeUp}>
             <div className="flex items-center gap-2">
               {<img src="/images/logo.png" alt="Rexipay" className="w-6 h-8" />}
@@ -36,12 +36,13 @@ const Footer = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-2 bg-white text-black rounded-full text-sm hover:bg-gray-100 transition-colors font-medium"
+                className="px-6 py-2 bg-[#F7931A] text-white rounded-full text-sm hover:bg-[#ff9d1a] transition-colors font-medium"
               >
                 Subscribe
               </motion.button>
             </div>
           </motion.div>
+
 
           {/* ✅ Text Sections (Right Side, evenly spaced) */}
           <motion.div
