@@ -213,7 +213,7 @@ const Features = () => {
             {/* Left: App Mockup Image */}
             <div className="relative flex justify-start">
               <img
-                src="/images/threephones.png"
+                src="/images/threephone.png"
                 alt="Rexipay mobile app mockup"
                 className="absolute -top-20 left-[-57px] w-full max-w-[340px] md:max-w-[400px] lg:max-w-[460px] object-contain drop-shadow-2xl z-20"
               />
