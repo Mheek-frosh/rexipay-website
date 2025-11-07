@@ -1,4 +1,3 @@
-// src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
@@ -8,9 +7,10 @@ import Features from './components/Features';
 import Testimonial from './components/Testimonial';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
+import HomeBot from './components/Homebot';
 import Careers from './screens/Careers';
-import Company from './screens/Company'; // ✅ new
-import Team from './screens/Teams'; // ✅ new
+import Company from './screens/Company';
+import Team from './screens/Teams';
 
 function App() {
   return (
@@ -23,7 +23,13 @@ function App() {
             path="/"
             element={
               <>
-                <Hero /> <About /> <Features /> <Testimonial /> <FAQ /> <Footer />
+                <Hero />
+                <About />
+                <Features />
+                <Testimonial />
+                <FAQ />
+                <HomeBot /> {/* ✅ added here */}
+                <Footer />
               </>
             }
           />
