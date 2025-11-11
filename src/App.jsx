@@ -11,6 +11,7 @@ import HomeBot from './components/Homebot';
 import Careers from './screens/Careers';
 import Company from './screens/Company';
 import Team from './screens/Teams';
+import Support from './screens/Support'; // ✅ added import
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
                 <Features />
                 <Testimonial />
                 <FAQ />
-                <HomeBot /> {/* ✅ added here */}
+                <HomeBot /> {/* ✅ included */}
                 <Footer />
               </>
             }
@@ -38,6 +39,7 @@ function App() {
           <Route path="/careers" element={<Careers />} />
           <Route path="/company" element={<Company />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/support" element={<Support />} /> {/* ✅ added support route */}
         </Routes>
       </div>
     </Router>

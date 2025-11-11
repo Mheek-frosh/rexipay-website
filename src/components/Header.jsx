@@ -1,4 +1,3 @@
-// src/components/Header.jsx, i need towork on this file
 import React, { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -27,6 +26,8 @@ const Header = () => {
       location.pathname === "/company"
     ) {
       setActiveNav("about");
+    } else if (location.pathname === "/support") {
+      setActiveNav("support");
     } else {
       setActiveNav("home");
     }
@@ -47,7 +48,6 @@ const Header = () => {
   // 🧭 Scroll to section handler
   const scrollToSection = (sectionId) => {
     if (location.pathname !== "/") {
-      // If not on home page, navigate to home first
       navigate("/");
       setTimeout(() => {
         document
@@ -153,10 +153,18 @@ const Header = () => {
             </div>
           ))}
 
-          {/* 🧭 Support Button */}
-          <button className="px-5 py-2 bg-white text-black rounded-full text-sm hover:bg-gray-100 active:bg-gray-200 transition-colors">
+          {/* 🧭 Support Button (now works with /support route) */}
+          <Link
+            to="/support"
+            onClick={() => setActiveNav("support")}
+            className={`px-5 py-2 rounded-full text-sm transition-colors ${
+              activeNav === "support"
+                ? "bg-[#7450A9] text-white"
+                : "bg-white text-black hover:bg-gray-100 active:bg-gray-200"
+            }`}
+          >
             Support
-          </button>
+          </Link>
         </nav>
 
         {/* 📱 Mobile Menu Toggle */}
@@ -217,9 +225,21 @@ const Header = () => {
               </div>
             ))}
 
-            <button className="px-5 py-2 bg-white text-black rounded-full text-sm hover:bg-gray-100 active:bg-gray-200 transition-colors">
+            {/* 🧭 Support Button for Mobile */}
+            <Link
+              to="/support"
+              onClick={() => {
+                setActiveNav("support");
+                setMobileMenuOpen(false);
+              }}
+              className={`px-5 py-2 rounded-full text-sm text-center transition-colors ${
+                activeNav === "support"
+                  ? "bg-[#7450A9] text-white"
+                  : "bg-white text-black hover:bg-gray-100 active:bg-gray-200"
+              }`}
+            >
               Support
-            </button>
+            </Link>
           </nav>
         </div>
       )}

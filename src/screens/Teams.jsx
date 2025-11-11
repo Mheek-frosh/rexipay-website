@@ -7,17 +7,17 @@ const Team = () => {
     {
       name: "Alexander Kunle",
       role: "Head of Product Strategy",
-      image: "/images/kunle.jpg",
+      image: "/images/thirdpic.png",
     },
     {
       name: "Efe Oluwa",
       role: "Lead Operations, Lagos",
-      image: "/images/efe.jpg",
+      image: "/images/ifepic.png",
     },
     {
       name: "Michael Usidamen",
       role: "Flutter Developer",
-      image: "/images/michael.jpg",
+      image: "/images/mikepic.png",
     },
   ];
 

@@ -1,4 +1,3 @@
-// src/screens/Support.jsx
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, LifeBuoy } from "lucide-react";
@@ -84,14 +83,30 @@ const Support = () => {
             value={formData.issueType}
             onChange={handleChange}
             required
-            className="w-full bg-white/5 text-white px-4 py-3 rounded-xl border border-white/10 focus:border-[#A88CFF] outline-none"
+            className="w-full bg-[#1A1F3C] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-[#A88CFF] outline-none appearance-none"
+            style={{
+              backgroundColor: "#1A1F3C",
+              color: "white",
+            }}
           >
-            <option value="">Select an issue</option>
-            <option value="transaction">Transaction Issue</option>
-            <option value="login">Login Problem</option>
-            <option value="app">App Bug or Crash</option>
-            <option value="feedback">General Feedback</option>
-            <option value="other">Other</option>
+            <option value="" className="bg-[#1A1F3C] text-gray-300">
+              Select an issue
+            </option>
+            <option value="transaction" className="bg-[#1A1F3C] text-white">
+              Transaction Issue
+            </option>
+            <option value="login" className="bg-[#1A1F3C] text-white">
+              Login Problem
+            </option>
+            <option value="app" className="bg-[#1A1F3C] text-white">
+              App Bug or Crash
+            </option>
+            <option value="feedback" className="bg-[#1A1F3C] text-white">
+              General Feedback
+            </option>
+            <option value="other" className="bg-[#1A1F3C] text-white">
+              Other
+            </option>
           </select>
         </div>
 
