@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { TrendingUp } from "lucide-react";
 
 const About = () => {
   const [animate, setAnimate] = useState(false);
@@ -30,8 +29,6 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-8 items-start">
           {/* ✅ Left Card - Saving Month Chart */}
           <div className="bg-gradient-to-b from-[#6A6DD2] to-[#8359E3] rounded-3xl p-8 space-y-6 shadow-xl text-white relative overflow-hidden transition-all duration-700 ease-in-out hover:scale-[1.02]">
-
-            {/* Top Text Section */}
             <div className="transition-all duration-700">
               <h3 className="text-lg font-semibold text-white/90">Saving Month</h3>
               <h2 className="text-4xl font-bold mt-2">$ 1852,00</h2>
@@ -44,67 +41,46 @@ const About = () => {
             <div className="relative mt-10">
               {/* Horizontal grid lines */}
               <div className="absolute inset-0 flex flex-col justify-between">
-                <div className="border-t border-dashed border-white/20 relative">
-                  <span className="absolute -left-2 -top-3 text-white/50 text-xs">50k</span>
-                </div>
-                <div className="border-t border-dashed border-white/20 relative">
-                  <span className="absolute -left-2 -top-3 text-white/50 text-xs">20k</span>
-                </div>
-                <div className="border-t border-dashed border-white/20 relative">
-                  <span className="absolute -left-2 -top-3 text-white/50 text-xs">10k</span>
-                </div>
-                <div className="border-t border-dashed border-white/20 relative">
-                  <span className="absolute -left-2 -top-3 text-white/50 text-xs">0</span>
-                </div>
+                {[50, 20, 10, 0].map((val, i) => (
+                  <div key={i} className="border-t border-dashed border-white/20 relative">
+                    <span className="absolute -left-2 -top-3 text-white/50 text-xs">{val}k</span>
+                  </div>
+                ))}
               </div>
 
               {/* Bars */}
               <div className="relative flex items-end justify-around h-48 px-8 z-10">
-                {/* April */}
-                <div
-                  className={`w-12 bg-white/40 rounded-t-2xl transition-all duration-700 ease-in-out`}
-                  style={{ height: animate ? "35%" : "0%" }}
-                ></div>
-
-                {/* May */}
-                <div
-                  className={`w-12 bg-white/40 rounded-t-2xl transition-all duration-700 ease-in-out delay-150`}
-                  style={{ height: animate ? "50%" : "0%" }}
-                ></div>
-
-                {/* June - smaller bar before active */}
-                <div
-                  className={`w-12 bg-white/40 rounded-t-2xl transition-all duration-700 ease-in-out delay-200`}
-                  style={{ height: animate ? "30%" : "0%" }}
-                ></div>
-
-                {/* June (Active Bar) */}
-                <div
-                  className={`relative w-12 bg-[#FF9F1C] rounded-t-2xl flex justify-center transition-all duration-700 ease-in-out delay-300`}
-                  style={{ height: animate ? "85%" : "0%" }}
-                >
-                  {/* Tooltip */}
+                {[35, 50, 30, 85, 48].map((height, i) => (
                   <div
-                    className={`absolute -top-12 bg-white text-black text-sm font-bold px-4 py-2 rounded-lg shadow-lg transition-all duration-500 whitespace-nowrap ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
-                      }`}
+                    key={i}
+                    className={`relative w-12 ${
+                      i === 3 ? "bg-[#FF9F1C]" : "bg-white/40"
+                    } rounded-t-2xl flex justify-center transition-all duration-700 ease-in-out`}
+                    style={{ height: animate ? `${height}%` : "0%" }}
                   >
-                    $20,000
-                  </div>
+                    {i === 3 && (
+                      <>
+                        {/* Tooltip */}
+                        <div
+                          className={`absolute -top-12 bg-white text-black text-sm font-bold px-4 py-2 rounded-lg shadow-lg transition-all duration-500 whitespace-nowrap ${
+                            animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+                          }`}
+                        >
+                          $20,000
+                        </div>
 
-                  {/* Circle Marker */}
-                  <div
-                    className={`absolute top-[45%] w-5 h-5 bg-white rounded-full flex items-center justify-center transition-all duration-700 ${animate ? "opacity-100 scale-100" : "opacity-0 scale-50"
-                      }`}
-                  >
-                    <div className="w-2.5 h-2.5 bg-black rounded-full"></div>
+                        {/* Circle Marker */}
+                        <div
+                          className={`absolute top-[45%] w-5 h-5 bg-white rounded-full flex items-center justify-center transition-all duration-700 ${
+                            animate ? "opacity-100 scale-100" : "opacity-0 scale-50"
+                          }`}
+                        >
+                          <div className="w-2.5 h-2.5 bg-black rounded-full"></div>
+                        </div>
+                      </>
+                    )}
                   </div>
-                </div>
-
-                {/* July */}
-                <div
-                  className={`w-12 bg-white/40 rounded-t-2xl transition-all duration-700 ease-in-out delay-500`}
-                  style={{ height: animate ? "48%" : "0%" }}
-                ></div>
+                ))}
               </div>
 
               {/* Bottom labels */}
@@ -119,29 +95,28 @@ const About = () => {
 
           {/* ✅ Right Cards - Feature List */}
           <div className="space-y-4">
-            {/* Crypto Transactions */}
-            <div className="bg-[#0F1430] border border-white/10 rounded-2xl p-6 hover:border-[#F7931A]/50 transition-colors duration-300">
-              <h4 className="text-lg font-semibold mb-2">Crypto Transactions</h4>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Trade and manage cryptocurrency like you would in the stock market — buy, sell, and invest securely with live updates.
-              </p>
-            </div>
-
-            {/* International Transfer */}
-            <div className="bg-[#0F1430] border border-white/10 rounded-2xl p-6 hover:border-[#F7931A]/50 transition-colors duration-300">
-              <h4 className="text-lg font-semibold mb-2">International Transfer</h4>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Send money globally with instant delivery, multi-currency support, and low transaction fees — all within a secure ecosystem.
-              </p>
-            </div>
-
-            {/* Pay Bill */}
-            <div className="bg-[#0F1430] border border-white/10 rounded-2xl p-6 hover:border-[#F7931A]/50 transition-colors duration-300">
-              <h4 className="text-lg font-semibold mb-2">Pay Bills</h4>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Manage your cash flow and bill payments easily and securely. Add funds, pay utilities, and stay in control — all from one dashboard.
-              </p>
-            </div>
+            {[
+              {
+                title: "Crypto Transactions",
+                desc: "Trade and manage cryptocurrency like you would in the stock market — buy, sell, and invest securely with live updates.",
+              },
+              {
+                title: "International Transfer",
+                desc: "Send money globally with instant delivery, multi-currency support, and low transaction fees — all within a secure ecosystem.",
+              },
+              {
+                title: "Pay Bills",
+                desc: "Manage your cash flow and bill payments easily and securely. Add funds, pay utilities, and stay in control — all from one dashboard.",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-[#0F1430] border border-white/10 rounded-2xl p-6 hover:border-[#F7931A]/50 transition-colors duration-300"
+              >
+                <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
+                <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
