@@ -11,13 +11,15 @@ import HomeBot from './components/Homebot';
 import Careers from './screens/Careers';
 import Company from './screens/Company';
 import Team from './screens/Teams';
-import Support from './screens/Support'; // ✅ added import
+import Support from './screens/Support'; 
+import ApiLearnMore from './screens/ApiLearnMore';
 
 function App() {
   return (
     <Router>
       <div className="min-h-screen bg-[#090D20] text-white overflow-x-hidden">
         <Header />
+
         <Routes>
           {/* 🏠 Home Page */}
           <Route
@@ -29,17 +31,18 @@ function App() {
                 <Features />
                 <Testimonial />
                 <FAQ />
-                <HomeBot /> {/* ✅ included */}
+                <HomeBot />
                 <Footer />
               </>
             }
           />
 
-          {/* ✅ Additional Pages */}
+          {/* 📄 Additional Screens */}
           <Route path="/careers" element={<Careers />} />
           <Route path="/company" element={<Company />} />
           <Route path="/team" element={<Team />} />
-          <Route path="/support" element={<Support />} /> {/* ✅ added support route */}
+          <Route path="/support" element={<Support />} />
+          <Route path="/api-learn-more" element={<ApiLearnMore />} />
         </Routes>
       </div>
     </Router>

@@ -1,7 +1,8 @@
 import React from "react";
 
 const Footer = () => {
-  const linkClasses = "hover:text-white transition-colors bg-transparent border-none p-0 cursor-pointer text-left";
+  const linkClasses =
+    "hover:text-white transition-colors bg-transparent border-none p-0 cursor-pointer text-left";
 
   return (
     <footer className="bg-black text-gray-400 py-16 px-8 md:px-20">
@@ -10,17 +11,33 @@ const Footer = () => {
         <div>
           <h2 className="text-white text-2xl font-bold mb-4">RexiPay</h2>
           <p className="mb-6">
-            Experience the future of financial transactions — fast, secure, and limitless.
-            Transfer, withdraw, and manage your funds with ease.
+            Experience the future of financial transactions — fast, secure, and
+            limitless. Transfer, withdraw, and manage your funds with ease.
           </p>
-          <p className="text-sm">© {new Date().getFullYear()} RexiPay. All rights reserved.</p>
+
+          {/* 🔥 Learn More About API Button */}
+          <button
+            onClick={() => (window.location.href = "/api-learn-more")}
+            className="mt-4 border border-gray-600 text-gray-300 hover:text-white hover:border-white transition px-4 py-2 rounded-lg"
+          >
+            Learn More About API
+          </button>
+
+          <p className="text-sm mt-6">
+            © {new Date().getFullYear()} RexiPay. All rights reserved.
+          </p>
         </div>
 
         {/* Column 2 */}
         <div>
           <h3 className="text-white font-semibold mb-4">Services</h3>
           <ul className="space-y-2">
-            {["Money Transfer", "Bill Payments", "Crypto Exchange", "POS-Free Payments"].map((item, i) => (
+            {[
+              "Money Transfer",
+              "Bill Payments",
+              "Crypto Exchange",
+              "POS-Free Payments",
+            ].map((item, i) => (
               <li key={i}>
                 <button className={linkClasses}>{item}</button>
               </li>
@@ -44,11 +61,13 @@ const Footer = () => {
         <div>
           <h3 className="text-white font-semibold mb-4">Support</h3>
           <ul className="space-y-2">
-            {["Help Center", "FAQs", "Security", "Report Issue"].map((item, i) => (
-              <li key={i}>
-                <button className={linkClasses}>{item}</button>
-              </li>
-            ))}
+            {["Help Center", "FAQs", "Security", "Report Issue"].map(
+              (item, i) => (
+                <li key={i}>
+                  <button className={linkClasses}>{item}</button>
+                </li>
+              )
+            )}
           </ul>
         </div>
       </div>
@@ -58,7 +77,9 @@ const Footer = () => {
         <p className="text-sm">Built with ❤️ by the RexiPay Team</p>
         <div className="flex space-x-6 mt-4 md:mt-0">
           {["Privacy Policy", "Terms of Service"].map((item, i) => (
-            <button key={i} className={linkClasses}>{item}</button>
+            <button key={i} className={linkClasses}>
+              {item}
+            </button>
           ))}
         </div>
       </div>
