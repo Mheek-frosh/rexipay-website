@@ -34,9 +34,12 @@ const Features = () => {
   };
 
   return (
-    <section id="crypto" className="py-20 px-6 md:px-24 text-white bg-[#0A0A0A]">
+    <section id="features" className="py-20 px-6 md:px-24 text-white bg-[#0A0A0A]">
       <div className="max-w-7xl mx-auto">
+        
+        {/* ===================================================================================== */}
         {/* ✅ Transfer & Withdraw Section */}
+        {/* ===================================================================================== */}
         <div className="relative border border-white/10 rounded-3xl p-10 md:p-16 mb-32 overflow-hidden bg-[#0F1430]/40 backdrop-blur-sm">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative flex justify-center items-center">
@@ -60,9 +63,12 @@ const Features = () => {
           </div>
         </div>
 
+        {/* ===================================================================================== */}
         {/* ✅ Crypto + Transaction Insights */}
-        <div className="grid md:grid-cols-2 gap-0 mb-16">
-          {/* Left: Orange Section */}
+        {/* ===================================================================================== */}
+        <div id="crypto" className="grid md:grid-cols-2 gap-0 mb-16">
+          
+          {/* Left - Crypto */}
           <motion.div
             variants={sectionVariants}
             initial={{ opacity: 0, x: -80 }}
@@ -78,8 +84,7 @@ const Features = () => {
               </h2>
               <p className="text-white/90 text-xs md:text-sm leading-relaxed">
                 We Offer A Comprehensive Range Of Innovative Financial Services
-                Tailored To Meet Your Needs. Our Services Include High-Yield
-                Savings Accounts.
+                Tailored To Meet Your Needs.
               </p>
             </div>
 
@@ -98,7 +103,7 @@ const Features = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right: Blue Section */}
+          {/* Right - Insights */}
           <motion.div
             variants={sectionVariants}
             initial={{ opacity: 0, x: 80 }}
@@ -134,8 +139,7 @@ const Features = () => {
 
               <p className="text-gray-400 text-xs md:text-sm leading-relaxed max-w-sm mx-auto">
                 Savings Accounts That Offer Competitive Interest Rates And
-                Flexible Deposit Options. Invest Wisely With Our Personalized
-                Services That Include High-Yield Savings.
+                Flexible Deposit Options.
               </p>
             </div>
 
@@ -156,7 +160,9 @@ const Features = () => {
           </motion.div>
         </div>
 
+        {/* ===================================================================================== */}
         {/* ✅ Feature Cards */}
+        {/* ===================================================================================== */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -164,7 +170,7 @@ const Features = () => {
           viewport={{ once: true, amount: 0.3 }}
           className="grid md:grid-cols-3 gap-8 mb-32"
         >
-          {/* 🟩 Green Card */}
+          {/* Green */}
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -8, scale: 1.03 }}
@@ -173,8 +179,7 @@ const Features = () => {
             <div>
               <h3 className="text-xl font-bold mb-2">100% Secured</h3>
               <p className="text-gray-800 leading-snug text-sm">
-                We Offer A Comprehensive Range Of Innovative Financial Services
-                Tailored To Meet Your Needs.
+                We Offer A Comprehensive Range Of Innovative Financial Services.
               </p>
             </div>
             <img
@@ -184,7 +189,7 @@ const Features = () => {
             />
           </motion.div>
 
-          {/* ⚪ White Card */}
+          {/* White */}
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -8, scale: 1.03 }}
@@ -205,7 +210,7 @@ const Features = () => {
             />
           </motion.div>
 
-          {/* 💗 Purple Card */}
+          {/* Purple */}
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -8, scale: 1.03 }}
@@ -233,8 +238,10 @@ const Features = () => {
           </motion.div>
         </motion.div>
 
-        {/* ✅ Credit Card Section */}
-        <div className="grid md:grid-cols-2 gap-16 items-center mb-32">
+        {/* ===================================================================================== */}
+        {/* ✅ Credit Card Section — NOW WITH id="card" */}
+        {/* ===================================================================================== */}
+        <div id="card" className="grid md:grid-cols-2 gap-16 items-center mb-32">
           <div className="space-y-6">
             <div className="inline-block px-4 py-2 bg-[#F7931A]/10 border border-[#F7931A]/20 rounded-full text-[#F7931A] text-sm font-medium">
               💳 CREDIT CARD
@@ -260,7 +267,11 @@ const Features = () => {
           </div>
         </div>
 
-        {/* ✅ App Download Section */}
+        {/* ===================================================================================== */}
+        {/* App Download + Security */}
+        {/* ===================================================================================== */}
+
+        {/* App Download — unchanged */}
         <div className="relative bg-gradient-to-r from-[#F7931A] to-[#FFA94D] rounded-3xl overflow-hidden mt-32">
           <div className="grid md:grid-cols-2 gap-6 items-center p-10 md:p-14 relative min-h-[380px] md:min-h-[420px]">
             <div className="relative flex justify-center md:justify-start">
@@ -303,7 +314,7 @@ const Features = () => {
           </div>
         </div>
 
-        {/* ✅ Security Section */}
+        {/* Security */}
         <div id="security" className="grid md:grid-cols-3 gap-8 mt-32">
           <div className="bg-[#0F1430] border border-white/10 rounded-2xl p-8 space-y-4 hover:border-[#F7931A]/50 transition-colors duration-300">
             <div className="w-12 h-12 bg-[#F7931A]/10 rounded-xl flex items-center justify-center">
@@ -333,14 +344,13 @@ const Features = () => {
             </div>
             <h3 className="text-2xl font-bold">Transparency & Simplicity</h3>
             <p className="text-gray-400 leading-relaxed">
-              We prioritize clarity and simplicity — no hidden fees, no complex
-              terms, just a smooth and transparent financial experience.
+              No hidden fees. No complex terms. Just a smooth, fair experience.
             </p>
           </div>
         </div>
       </div>
 
-      {/* ✅ Fade Up Keyframes */}
+      {/* Fade animation */}
       <style>{`
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(30px); }

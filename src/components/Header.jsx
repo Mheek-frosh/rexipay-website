@@ -18,22 +18,20 @@ const Header = () => {
     { id: "about", label: "About Us", hasDropdown: true },
   ];
 
-  // ✅ Detect active nav based on route
+  /** 🔍 Detect active nav from route **/
   useEffect(() => {
-    if (
-      location.pathname === "/careers" ||
-      location.pathname === "/team" ||
-      location.pathname === "/company"
-    ) {
+    const path = location.pathname;
+
+    if (["/careers", "/team", "/company"].includes(path)) {
       setActiveNav("about");
-    } else if (location.pathname === "/support") {
+    } else if (path === "/support") {
       setActiveNav("support");
-    } else {
+    } else if (path === "/") {
       setActiveNav("home");
     }
   }, [location.pathname]);
 
-  // 🕒 Keep dropdown open slightly longer
+  /** ⏳ Dropdown hover delay **/
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setDropdownOpen(true);
@@ -45,32 +43,36 @@ const Header = () => {
     }, 300);
   };
 
-  // 🧭 Scroll to section handler
+  /** 🧭 Scroll to section **/
   const scrollToSection = (sectionId) => {
     if (location.pathname !== "/") {
       navigate("/");
       setTimeout(() => {
-        document
-          .getElementById(sectionId)
-          ?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 500);
-    } else {
-      document
-        .getElementById(sectionId)
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+        document.getElementById(sectionId)?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 600);
+      return;
     }
+
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   return (
     <header className="fixed top-0 w-full bg-[#090D20]/80 backdrop-blur-md z-50 px-6 md:px-24 py-4 border-b border-white/10">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
-        {/* 🪪 Logo */}
+
+        {/* 🔷 Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img src="/images/logo.png" alt="Rexipay" className="w-6 h-8" />
           <span className="text-xl md:text-2xl font-normal">Rexipay</span>
         </Link>
 
-        {/* 🌐 Desktop Navigation */}
+        {/* 🖥 Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8 relative">
           {navItems.map((item) => (
             <div
@@ -106,12 +108,12 @@ const Header = () => {
                 </button>
               )}
 
-              {/* Active underline */}
+              {/* Active Underline */}
               {activeNav === item.id && (
                 <span className="absolute -bottom-1 w-4/5 h-[2px] bg-[#7450A9] rounded-full"></span>
               )}
 
-              {/* 🟣 Dropdown */}
+              {/* Dropdown Menu */}
               {item.hasDropdown && dropdownOpen && (
                 <div
                   className="absolute top-6 flex flex-col bg-white text-black rounded-lg shadow-lg mt-4 py-2 w-44 z-20 border border-gray-200"
@@ -122,8 +124,8 @@ const Header = () => {
                     to="/company"
                     className="px-4 py-2 text-sm hover:bg-gray-100"
                     onClick={() => {
-                      setActiveNav("about");
                       setDropdownOpen(false);
+                      setActiveNav("about");
                     }}
                   >
                     Company
@@ -132,8 +134,8 @@ const Header = () => {
                     to="/team"
                     className="px-4 py-2 text-sm hover:bg-gray-100"
                     onClick={() => {
-                      setActiveNav("about");
                       setDropdownOpen(false);
+                      setActiveNav("about");
                     }}
                   >
                     Team
@@ -142,8 +144,8 @@ const Header = () => {
                     to="/careers"
                     className="px-4 py-2 text-sm hover:bg-gray-100"
                     onClick={() => {
-                      setActiveNav("about");
                       setDropdownOpen(false);
+                      setActiveNav("about");
                     }}
                   >
                     Careers
@@ -153,7 +155,7 @@ const Header = () => {
             </div>
           ))}
 
-          {/* 🧭 Support Button (now works with /support route) */}
+          {/* Support Button */}
           <Link
             to="/support"
             onClick={() => setActiveNav("support")}
@@ -167,7 +169,7 @@ const Header = () => {
           </Link>
         </nav>
 
-        {/* 📱 Mobile Menu Toggle */}
+        {/* 📱 Mobile Menu Button */}
         <button
           className="md:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -176,7 +178,7 @@ const Header = () => {
         </button>
       </div>
 
-      {/* 📱 Mobile Dropdown Menu */}
+      {/* 📱 Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden mt-4 pb-4 border-t border-white/10 animate-fade-in">
           <nav className="flex flex-col gap-4 mt-4">
@@ -225,7 +227,7 @@ const Header = () => {
               </div>
             ))}
 
-            {/* 🧭 Support Button for Mobile */}
+            {/* Mobile Support Button */}
             <Link
               to="/support"
               onClick={() => {

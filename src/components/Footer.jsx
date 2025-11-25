@@ -55,7 +55,7 @@ const Footer = () => {
 
       {/* Footer Bottom */}
       <div className="border-t border-gray-700 mt-12 pt-6 flex flex-col md:flex-row items-center justify-between">
-        <p className="text-sm">Built with ❤️ by the RexiPay Team</p>
+        <p className="text-sm">Built with  by the RexiPay Team</p>
         <div className="flex space-x-6 mt-4 md:mt-0">
           {["Privacy Policy", "Terms of Service"].map((item, i) => (
             <button key={i} className={linkClasses}>{item}</button>

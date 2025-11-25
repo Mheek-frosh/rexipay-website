@@ -21,7 +21,7 @@ function App() {
         <Header />
 
         <Routes>
-          {/* 🏠 Home Page */}
+          {/* Home Page */}
           <Route
             path="/"
             element={
@@ -37,7 +37,7 @@ function App() {
             }
           />
 
-          {/* 📄 Additional Screens */}
+          {/* Additional Screens */}
           <Route path="/careers" element={<Careers />} />
           <Route path="/company" element={<Company />} />
           <Route path="/team" element={<Team />} />
