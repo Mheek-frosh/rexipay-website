@@ -82,4 +82,4 @@ Pull requests are welcome!
 
 ---
 
-Made with ❤️ by Rexipay Team
+Made with ❤️ by Michael Ussidamen for Rexipay Team
