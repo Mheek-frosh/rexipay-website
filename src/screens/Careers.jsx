@@ -30,7 +30,7 @@ const Careers = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0F1D3C] to-[#1C1440] text-white px-6 md:px-16 py-24">
-      {/* 🧭 Header Section */}
+      {/*  Header Section */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ const Careers = () => {
         </p>
       </motion.div>
 
-      {/* 💼 Job Openings Section */}
+      {/*  Job Openings Section */}
       <div className="grid md:grid-cols-3 gap-8">
         {jobOpenings.map((job, i) => (
           <motion.div
@@ -77,7 +77,7 @@ const Careers = () => {
         ))}
       </div>
 
-      {/* 🌟 Footer Tagline */}
+      {/*  Footer Tagline */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

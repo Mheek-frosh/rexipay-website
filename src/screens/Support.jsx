@@ -16,13 +16,13 @@ const Support = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("✅ Your complaint has been submitted. Our team will get back to you soon!");
+    alert("Your complaint has been submitted. Our team will get back to you soon!");
     setFormData({ name: "", email: "", issueType: "", message: "" });
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0F1D3C] to-[#1C1440] text-white px-6 md:px-16 py-24">
-      {/* 💬 Header */}
+      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ const Support = () => {
         </p>
       </motion.div>
 
-      {/* 🧾 Support Form */}
+      {/* Support Form */}
       <motion.form
         onSubmit={handleSubmit}
         initial={{ opacity: 0, y: 40 }}
@@ -46,7 +46,7 @@ const Support = () => {
         transition={{ duration: 0.6 }}
         className="max-w-3xl mx-auto bg-white/10 backdrop-blur-lg rounded-3xl border border-[#7450A9]/40 p-8 shadow-lg"
       >
-        {/* 🧍 Name & Email */}
+        {/*  Name & Email */}
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div>
             <label className="block text-sm mb-2 text-gray-300">Full Name</label>
@@ -75,7 +75,7 @@ const Support = () => {
           </div>
         </div>
 
-        {/* 🧭 Issue Type */}
+        {/*  Issue Type */}
         <div className="mb-6">
           <label className="block text-sm mb-2 text-gray-300">Type of Issue</label>
           <select
@@ -110,7 +110,7 @@ const Support = () => {
           </select>
         </div>
 
-        {/* 📝 Message */}
+        {/* Message */}
         <div className="mb-8">
           <label className="block text-sm mb-2 text-gray-300">Describe Your Issue</label>
           <textarea
@@ -124,7 +124,7 @@ const Support = () => {
           ></textarea>
         </div>
 
-        {/* 🚀 Submit Button */}
+        {/*  Submit Button */}
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
