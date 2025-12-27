@@ -75,7 +75,7 @@ const Support = () => {
           </div>
         </div>
 
-        {/*  Issue Type */}
+        {/*Issue Type*/}
         <div className="mb-6">
           <label className="block text-sm mb-2 text-gray-300">Type of Issue</label>
           <select
@@ -124,7 +124,7 @@ const Support = () => {
           ></textarea>
         </div>
 
-        {/*  Submit Button */}
+        {/*Submit Button*/}
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
@@ -135,7 +135,7 @@ const Support = () => {
         </motion.button>
       </motion.form>
 
-      {/* 💡 Contact Info */}
+      {/*Contact Info*/}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

@@ -23,7 +23,7 @@ const Team = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0F1D3C] to-[#1C1440] text-white px-6 md:px-16 py-24">
-      {/* 🧭 Header */}
+      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ const Team = () => {
         </p>
       </motion.div>
 
-      {/* 👥 Team Grid */}
+      {/* Team Grid */}
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
         {team.map((member, index) => (
           <motion.div
@@ -52,7 +52,7 @@ const Team = () => {
             transition={{ delay: index * 0.2 }}
             className="bg-white/10 backdrop-blur-md border border-[#7450A9]/30 rounded-3xl overflow-hidden shadow-lg hover:shadow-[#A88CFF]/30 transition-all duration-300"
           >
-            {/* 🖼️ Image */}
+            {/* Image */}
             <div className="w-full h-64 overflow-hidden border-b border-[#7450A9]/20">
               <img
                 src={member.image}
