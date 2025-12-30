@@ -63,189 +63,117 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 w-full bg-[#090D20]/80 backdrop-blur-md z-50 px-6 md:px-24 py-4 border-b border-white/10">
-      <div className="flex items-center justify-between max-w-7xl mx-auto">
+ <header className="fixed top-0 w-full bg-[#090D20]/70 backdrop-blur-xl z-50 px-6 md:px-24 py-4 border-b border-white/10">
+  <div className="flex items-center justify-between max-w-7xl mx-auto">
 
-        {/* 🔷 Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <img src="/images/logo.png" alt="Rexipay" className="w-6 h-8" />
-          <span className="text-xl md:text-2xl font-normal">Rexipay</span>
-        </Link>
+    {/* 🔷 Logo */}
+    <Link to="/" className="flex items-center gap-3 group">
+      <img
+        src="/images/logo.png"
+        alt="Rexipay"
+        className="w-7 h-9 transition-transform duration-300 group-hover:scale-105"
+      />
 
-        {/* 🖥 Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8 relative">
-          {navItems.map((item) => (
-            <div
-              key={item.id}
-              className="relative flex flex-col items-center"
-              onMouseEnter={item.hasDropdown ? handleMouseEnter : undefined}
-              onMouseLeave={item.hasDropdown ? handleMouseLeave : undefined}
-            >
-              {item.hasDropdown ? (
-                <button
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className={`text-sm transition-colors ${
-                    activeNav === item.id
-                      ? "text-[#7450A9]"
-                      : "hover:text-[#7450A9]"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    setActiveNav(item.id);
-                    scrollToSection(item.section);
-                  }}
-                  className={`text-sm transition-colors ${
-                    activeNav === item.id
-                      ? "text-[#7450A9]"
-                      : "hover:text-[#7450A9]"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              )}
-
-              {/* Active Underline */}
-              {activeNav === item.id && (
-                <span className="absolute -bottom-1 w-4/5 h-[2px] bg-[#7450A9] rounded-full"></span>
-              )}
-
-              {/* Dropdown Menu */}
-              {item.hasDropdown && dropdownOpen && (
-                <div
-                  className="absolute top-6 flex flex-col bg-white text-black rounded-lg shadow-lg mt-4 py-2 w-44 z-20 border border-gray-200"
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <Link
-                    to="/company"
-                    className="px-4 py-2 text-sm hover:bg-gray-100"
-                    onClick={() => {
-                      setDropdownOpen(false);
-                      setActiveNav("about");
-                    }}
-                  >
-                    Company
-                  </Link>
-                  <Link
-                    to="/team"
-                    className="px-4 py-2 text-sm hover:bg-gray-100"
-                    onClick={() => {
-                      setDropdownOpen(false);
-                      setActiveNav("about");
-                    }}
-                  >
-                    Team
-                  </Link>
-                  <Link
-                    to="/careers"
-                    className="px-4 py-2 text-sm hover:bg-gray-100"
-                    onClick={() => {
-                      setDropdownOpen(false);
-                      setActiveNav("about");
-                    }}
-                  >
-                    Careers
-                  </Link>
-                </div>
-              )}
-            </div>
-          ))}
-
-          {/* Support Button */}
-          <Link
-            to="/support"
-            onClick={() => setActiveNav("support")}
-            className={`px-5 py-2 rounded-full text-sm transition-colors ${
-              activeNav === "support"
-                ? "bg-[#7450A9] text-white"
-                : "bg-white text-black hover:bg-gray-100 active:bg-gray-200"
-            }`}
-          >
-            Support
-          </Link>
-        </nav>
-
-        {/* 📱 Mobile Menu Button */}
-        <button
-          className="md:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+      <div className="flex flex-col leading-none">
+        <span className="text-xl md:text-2xl font-semibold tracking-wide">
+          Rexi<span className="text-[#7450A9]">Pay</span>
+        </span>
+        <span className="hidden md:block text-[11px] text-gray-400 tracking-wider">
+          Powering Payments. Everywhere.
+        </span>
       </div>
+    </Link>
 
-      {/* 📱 Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden mt-4 pb-4 border-t border-white/10 animate-fade-in">
-          <nav className="flex flex-col gap-4 mt-4">
-            {navItems.map((item) => (
-              <div key={item.id} className="flex flex-col">
-                {!item.hasDropdown ? (
-                  <button
-                    onClick={() => {
-                      setActiveNav(item.id);
-                      scrollToSection(item.section);
-                      setMobileMenuOpen(false);
-                    }}
-                    className={`text-sm transition-colors ${
-                      activeNav === item.id
-                        ? "text-[#7450A9]"
-                        : "hover:text-[#7450A9]"
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                ) : (
-                  <div className="ml-4 mt-2 flex flex-col gap-2">
-                    <Link
-                      to="/company"
-                      className="text-sm hover:text-[#7450A9]"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Company
-                    </Link>
-                    <Link
-                      to="/team"
-                      className="text-sm hover:text-[#7450A9]"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Team
-                    </Link>
-                    <Link
-                      to="/careers"
-                      className="text-sm hover:text-[#7450A9]"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Careers
-                    </Link>
-                  </div>
-                )}
-              </div>
-            ))}
-
-            {/* Mobile Support Button */}
-            <Link
-              to="/support"
-              onClick={() => {
-                setActiveNav("support");
-                setMobileMenuOpen(false);
-              }}
-              className={`px-5 py-2 rounded-full text-sm text-center transition-colors ${
-                activeNav === "support"
-                  ? "bg-[#7450A9] text-white"
-                  : "bg-white text-black hover:bg-gray-100 active:bg-gray-200"
+    {/* 🖥 Desktop Navigation */}
+    <nav className="hidden md:flex items-center gap-8 relative">
+      {navItems.map((item) => (
+        <div
+          key={item.id}
+          className="relative flex flex-col items-center"
+          onMouseEnter={item.hasDropdown ? handleMouseEnter : undefined}
+          onMouseLeave={item.hasDropdown ? handleMouseLeave : undefined}
+        >
+          {item.hasDropdown ? (
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className={`text-sm font-medium tracking-wide transition-all duration-300 ${
+                activeNav === item.id
+                  ? "text-[#A88CFF]"
+                  : "text-gray-300 hover:text-[#A88CFF]"
               }`}
             >
-              Support
-            </Link>
-          </nav>
+              {item.label}
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setActiveNav(item.id);
+                scrollToSection(item.section);
+              }}
+              className={`text-sm font-medium tracking-wide transition-all duration-300 ${
+                activeNav === item.id
+                  ? "text-[#A88CFF]"
+                  : "text-gray-300 hover:text-[#A88CFF]"
+              }`}
+            >
+              {item.label}
+            </button>
+          )}
+
+          {/* Active Underline */}
+          {activeNav === item.id && (
+            <span className="absolute -bottom-1 w-4/5 h-[2px] bg-gradient-to-r from-[#7450A9] to-[#A88CFF] rounded-full animate-fade-in"></span>
+          )}
+
+          {/* Dropdown */}
+          {item.hasDropdown && dropdownOpen && (
+            <div
+              className="absolute top-7 flex flex-col bg-white text-black rounded-xl shadow-2xl mt-4 py-2 w-48 z-20 border border-gray-200 animate-slide-down"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              {["Company", "Team", "Careers"].map((label) => (
+                <Link
+                  key={label}
+                  to={`/${label.toLowerCase()}`}
+                  className="px-4 py-2 text-sm font-medium hover:bg-gray-100 transition-colors"
+                  onClick={() => {
+                    setDropdownOpen(false);
+                    setActiveNav("about");
+                  }}
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
-      )}
-    </header>
+      ))}
+
+      {/* Support Button */}
+      <Link
+        to="/support"
+        onClick={() => setActiveNav("support")}
+        className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+          activeNav === "support"
+            ? "bg-[#7450A9] text-white shadow-lg shadow-[#7450A9]/40"
+            : "bg-white text-black hover:bg-gray-100 hover:shadow-md"
+        }`}
+      >
+        Support
+      </Link>
+    </nav>
+
+    {/* 📱 Mobile Menu Button */}
+    <button
+      className="md:hidden text-white"
+      onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+    >
+      {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+    </button>
+  </div>
+</header>
+
   );
 };
 
