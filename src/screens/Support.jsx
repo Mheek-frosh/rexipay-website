@@ -39,9 +39,11 @@ const Support = () => {
         <div className="flex justify-center mb-4">
           <Sparkles className="text-[#A88CFF]" size={32} />
         </div>
+
         <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
           We’re Here to <span className="text-[#A88CFF]">Help You</span>
         </h1>
+
         <p className="text-gray-300 max-w-2xl mx-auto leading-relaxed text-lg">
           At RexiPay, your experience matters. Whether it’s a transaction concern,
           account issue, or feedback — our support team is ready to assist you.
@@ -153,14 +155,22 @@ const Support = () => {
         </p>
       </motion.div>
 
-      {/* Logo at Bottom */}
-      <div className="flex justify-center mt-16 relative z-10">
-        <img
-          src="/images/logo.png"
-          alt="RexiPay Logo"
-          className="w-12 opacity-80 hover:opacity-100 transition"
-        />
-      </div>
+      {/* RexiPay Brand Mark (Text + Slogan) */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="flex justify-center mt-20 relative z-10"
+      >
+        <div className="text-center group cursor-default">
+          <h2 className="text-2xl font-bold text-white tracking-wide">
+            Rexi<span className="text-[#A88CFF]">Pay</span>
+          </h2>
+          <p className="text-sm text-gray-400 mt-1 group-hover:text-gray-300 transition">
+            Fast. Secure. Limitless.
+          </p>
+        </div>
+      </motion.div>
     </div>
   );
 };
