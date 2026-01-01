@@ -63,117 +63,108 @@ const Header = () => {
   };
 
   return (
- <header className="fixed top-0 w-full bg-[#090D20]/70 backdrop-blur-xl z-50 px-6 md:px-24 py-4 border-b border-white/10">
-  <div className="flex items-center justify-between max-w-7xl mx-auto">
+    <header className="fixed top-0 w-full z-50 bg-[#090D20]/70 backdrop-blur-xl border-b border-white/10">
+      <div className="px-6 md:px-24 py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
 
-    {/* 🔷 Logo */}
-    <Link to="/" className="flex items-center gap-3 group">
-      <img
-        src="/images/logo.png"
-        alt="Rexipay"
-        className="w-7 h-9 transition-transform duration-300 group-hover:scale-105"
-      />
-
-      <div className="flex flex-col leading-none">
-        <span className="text-xl md:text-2xl font-semibold tracking-wide">
-          Rexi<span className="text-[#7450A9]">Pay</span>
-        </span>
-        <span className="hidden md:block text-[11px] text-gray-400 tracking-wider">
-          Powering Payments. Everywhere.
-        </span>
-      </div>
-    </Link>
-
-    {/* 🖥 Desktop Navigation */}
-    <nav className="hidden md:flex items-center gap-8 relative">
-      {navItems.map((item) => (
-        <div
-          key={item.id}
-          className="relative flex flex-col items-center"
-          onMouseEnter={item.hasDropdown ? handleMouseEnter : undefined}
-          onMouseLeave={item.hasDropdown ? handleMouseLeave : undefined}
-        >
-          {item.hasDropdown ? (
-            <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className={`text-sm font-medium tracking-wide transition-all duration-300 ${
-                activeNav === item.id
-                  ? "text-[#A88CFF]"
-                  : "text-gray-300 hover:text-[#A88CFF]"
-              }`}
-            >
-              {item.label}
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                setActiveNav(item.id);
-                scrollToSection(item.section);
-              }}
-              className={`text-sm font-medium tracking-wide transition-all duration-300 ${
-                activeNav === item.id
-                  ? "text-[#A88CFF]"
-                  : "text-gray-300 hover:text-[#A88CFF]"
-              }`}
-            >
-              {item.label}
-            </button>
-          )}
-
-          {/* Active Underline */}
-          {activeNav === item.id && (
-            <span className="absolute -bottom-1 w-4/5 h-[2px] bg-gradient-to-r from-[#7450A9] to-[#A88CFF] rounded-full animate-fade-in"></span>
-          )}
-
-          {/* Dropdown */}
-          {item.hasDropdown && dropdownOpen && (
-            <div
-              className="absolute top-7 flex flex-col bg-white text-black rounded-xl shadow-2xl mt-4 py-2 w-48 z-20 border border-gray-200 animate-slide-down"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              {["Company", "Team", "Careers"].map((label) => (
-                <Link
-                  key={label}
-                  to={`/${label.toLowerCase()}`}
-                  className="px-4 py-2 text-sm font-medium hover:bg-gray-100 transition-colors"
-                  onClick={() => {
-                    setDropdownOpen(false);
-                    setActiveNav("about");
-                  }}
-                >
-                  {label}
-                </Link>
-              ))}
+          {/* 🔷 Logo */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <img
+              src="/images/logo.png"
+              alt="RexiPay"
+              className="w-7 h-9 transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="flex flex-col leading-tight">
+              <span className="text-xl md:text-2xl font-semibold tracking-wide">
+                Rexi<span className="text-[#A88CFF]">Pay</span>
+              </span>
+              <span className="hidden md:block text-[11px] text-gray-400 tracking-wider">
+                Powering Payments. Everywhere.
+              </span>
             </div>
-          )}
+          </Link>
+
+          {/* 🖥 Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-10 relative">
+            {navItems.map((item) => (
+              <div
+                key={item.id}
+                className="relative"
+                onMouseEnter={item.hasDropdown ? handleMouseEnter : undefined}
+                onMouseLeave={item.hasDropdown ? handleMouseLeave : undefined}
+              >
+                <button
+                  onClick={() => {
+                    if (!item.hasDropdown) {
+                      setActiveNav(item.id);
+                      scrollToSection(item.section);
+                    } else {
+                      setDropdownOpen(!dropdownOpen);
+                    }
+                  }}
+                  className={`text-sm font-medium tracking-wide transition-all duration-300 ${
+                    activeNav === item.id
+                      ? "text-[#A88CFF]"
+                      : "text-gray-300 hover:text-[#A88CFF]"
+                  }`}
+                >
+                  {item.label}
+                </button>
+
+                {/* Active Indicator */}
+                {activeNav === item.id && (
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-[2px] bg-gradient-to-r from-[#7450A9] to-[#A88CFF] rounded-full"></span>
+                )}
+
+                {/* Dropdown */}
+                {item.hasDropdown && dropdownOpen && (
+                  <div
+                    className="absolute top-8 left-1/2 -translate-x-1/2 w-48 rounded-xl bg-white text-black shadow-2xl border border-gray-200 py-2 animate-fade-in"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {["Company", "Team", "Careers"].map((label) => (
+                      <Link
+                        key={label}
+                        to={`/${label.toLowerCase()}`}
+                        onClick={() => {
+                          setDropdownOpen(false);
+                          setActiveNav("about");
+                        }}
+                        className="block px-4 py-2 text-sm font-medium hover:bg-gray-100 transition"
+                      >
+                        {label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+
+            {/* Support CTA */}
+            <Link
+              to="/support"
+              onClick={() => setActiveNav("support")}
+              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                activeNav === "support"
+                  ? "bg-gradient-to-r from-[#7450A9] to-[#A88CFF] text-white shadow-lg shadow-[#7450A9]/40"
+                  : "bg-white text-black hover:bg-gray-100 hover:shadow-md"
+              }`}
+            >
+              Support
+            </Link>
+          </nav>
+
+          {/* 📱 Mobile Toggle */}
+          <button
+            className="md:hidden text-white"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
-      ))}
-
-      {/* Support Button */}
-      <Link
-        to="/support"
-        onClick={() => setActiveNav("support")}
-        className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-          activeNav === "support"
-            ? "bg-[#7450A9] text-white shadow-lg shadow-[#7450A9]/40"
-            : "bg-white text-black hover:bg-gray-100 hover:shadow-md"
-        }`}
-      >
-        Support
-      </Link>
-    </nav>
-
-    {/* 📱 Mobile Menu Button */}
-    <button
-      className="md:hidden text-white"
-      onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-    >
-      {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-    </button>
-  </div>
-</header>
-
+      </div>
+    </header>
   );
 };
 
